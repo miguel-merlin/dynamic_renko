@@ -1,2 +1,5 @@
 # Ignore virtualenv
 venv/
+
+# Ignore plots
+results/
