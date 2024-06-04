@@ -37,11 +37,11 @@ def display_candlestick(value):
     df = renko_algo.get_candlestick_plot()
     fig = go.Figure(
         go.Candlestick(
-            x=df["Date"],
-            open=df["Open"],
-            high=df["High"],
-            low=df["Low"],
-            close=df["Close"],
+            x=df["date"],
+            open=df["open"],
+            high=df["high"],
+            low=df["low"],
+            close=df["close"],
         )
     )
     fig.update_layout(xaxis_rangeslider_visible="slider" in value)

@@ -1,23 +1,21 @@
 import ccxt
-from dataset import fetch_asset_data
-from renko import renko_data, generate_positions
-from performance import calculate_strategy_performance
+from algorithm.dataset import fetch_asset_data
+from algorithm.renko import renko_data, generate_positions
+from algorithm.performance import calculate_strategy_performance
 
 # Define class as Singleton
 class RenkoAlgo(object):
     _instance = None
     
-    def __new__(cls):
+    def __new__(cls, symbol, start_date, interval):
         if cls._instance is None:
             cls._instance = super(RenkoAlgo, cls).__new__(cls)        
+            cls._instance.symbol = symbol
+            cls._instance.start_date = start_date
+            cls._instance.interval = interval
+            cls._instance.exchange = ccxt.kraken()
+            cls._instance._refetch_data_and_compute_renko()
         return cls._instance
-    
-    def __init__(self, symbol, start_data, interval) -> None:
-        self.symbol = symbol
-        self.start_date = start_data
-        self.interval = interval
-        self.exchange = ccxt.kraken()
-        self._refetch_data_and_compute_renko()
     
     def _refetch_data_and_compute_renko(self):
         self.data = fetch_asset_data(symbol=self.symbol, start_date=self.start_date, interval=self.interval, exchange=self.exchange)
