@@ -3,3 +3,6 @@ venv/
 
 # Ignore plots
 results/
+
+# Ignore python cache
+__pycache__/
