@@ -18,7 +18,7 @@ renko_algo = RenkoAlgo(
 
 app.layout = html.Div(
     [
-        html.H4("Candlestick chart"),
+        html.H4("Candlestick Chart ETH/USDT"),
         dcc.Checklist(
             id="toggle-rangeslider",
             options=[{"label": "Include Rangeslider", "value": "slider"}],
