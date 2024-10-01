@@ -4,7 +4,6 @@ from algorithm.RenkoAlgo import RenkoAlgo
 
 app = Dash(__name__)
 
-# Initialize singleton RenkoAlgo object
 default_config = {
     "symbol": "ETH/USDT",
     "start_date": "2010-12-1",
